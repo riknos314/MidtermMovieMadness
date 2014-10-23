@@ -5,8 +5,8 @@ getMovieInfo = function() {   //Gets Rotten Tomatoes info and puts it in a dicti
     request.onreadystatechange = function() {
 
 	if (request.readyState == 4)
-		if (request.status == 200) {
-			//what to do here
+		if (request.status == 200) {    //build dictionary in this block
+			
 		
         }
 	}
@@ -19,8 +19,13 @@ getMovieInfo = function() {   //Gets Rotten Tomatoes info and puts it in a dicti
 	}
 	console.log(searchQuery); //for debugging just in case my method isn't quite right
 	
-	var targetURL
+	var targetURL = 'http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=fxee5efruku5fre6wdbe7c6r&q=' + searchQuery + '&page_limit=1';
 	
+	console.log(targetURL); //more debugging
+	
+	request.open('GET', targetURL, true);
+	
+	request.send(null);
 	
 
 }
