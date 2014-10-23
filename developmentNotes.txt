@@ -5,6 +5,8 @@ Also naming conventions go here.
 	--I used a document.getElementById('movietitle') to refer to our input search box in the HTML doc;
 		we don't have the input element in the HTML file yet but when we do we just need to make sure the
 		id's match so we don't get an awkward error
+		
+	--Working on fixing searchQuery alrogithm
 
 
 
