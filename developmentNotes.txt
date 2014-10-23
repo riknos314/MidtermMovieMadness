@@ -1,3 +1,10 @@
 This is where we write what we are working on.
 
 Also naming conventions go here.
+
+
+
+
+
+API keys:
+Application: Movie Madness Key: fxee5efruku5fre6wdbe7c6r         //Rotten Tomatoes
