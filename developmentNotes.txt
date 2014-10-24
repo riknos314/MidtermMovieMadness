@@ -8,7 +8,12 @@ Also naming conventions go here.
 		
 	--Fixed searching algorithm for converting movie titles to URI form (word+word+word)
 	
-	--Still haven't fixed the wrong movie problem (search the dark knight and RT returns the dark knight rises)
+	--Just fixed the wrong movie problem (search the dark knight and RT returns the dark knight rises)
+	
+	--Finished main function for Rotten Tomatoes API--I separated getting the info from pushing it onto the
+	page so that the code doesn't get too messy. Look at the JS file to see exactly what I mean--I just created
+	a few functions that we can define once we know how we want to push things onto the page exactly. I documented the code
+	pretty heavily, so you can see what I mean.
 
 
 
