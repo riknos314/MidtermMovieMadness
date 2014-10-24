@@ -6,7 +6,9 @@ Also naming conventions go here.
 		we don't have the input element in the HTML file yet but when we do we just need to make sure the
 		id's match so we don't get an awkward error
 		
-	--Working on fixing searchQuery alrogithm
+	--Fixed searching algorithm for converting movie titles to URI form (word+word+word)
+	
+	--Still haven't fixed the wrong movie problem (search the dark knight and RT returns the dark knight rises)
 
 
 
