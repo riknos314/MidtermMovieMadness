@@ -48,15 +48,25 @@ getYouTubeTrailer = function(moviename) {  //Equivalent of getMovieInfo(), but f
 	request.onreadystatechange = function() {
 		if (request.readyState == 4)
 			if (request.status == 200) {
-				//code here
+				var infodict = JSON.parse(request.responseText);
+				
+				console.log(infodict);
 			}
 	}
+	var movienamelist = moviename.split(" ");
+	var searchQuery = movienamelist.shift();
+	while (movienamelist.length != 0) {
+		searchQuery = searchQuery + "+" + movienamelist.shift();
+	}
+	searchQuery = searchQuery + "+Trailer";
 	
-	var targetURL; // initialize this to whatever Youtube API needs
+	console.log(searchQuery);
+	
+	var targetURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + searchQuery + "&type=video&videoEmbeddable=true&key=AIzaSyBWCUE9DE9Ay5tfLMl5CXR-I9cW98Nb8HA";
 		
-	//request.open('GET', targetURL, true);
+	request.open('GET', targetURL, true);
 	
-	//request.send(null);
+	request.send(null);
 }
 
 
@@ -101,7 +111,6 @@ getMovieInfo = function() {   //Gets Rotten Tomatoes info
 				var synopsis = movie.synopsis;
 				var moviepic = movie.posters["thumbnail"]
 			
-				console.log(movie.title);
 				
 				postpgrating(pgrating);                   //Pushing returned elements onto page
 				postcriticrating(criticrating);
@@ -120,7 +129,6 @@ getMovieInfo = function() {   //Gets Rotten Tomatoes info
 		while (wordlist.length != 0) {
 			searchQuery = searchQuery + "+" + wordlist.shift();
 		}
-	console.log(searchQuery);
 	
 	var targetURL = 'http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=fxee5efruku5fre6wdbe7c6r&q=' + searchQuery + '&page_limit=8';
 		
