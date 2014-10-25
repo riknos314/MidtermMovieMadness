@@ -19,7 +19,7 @@ Also naming conventions go here.
 
 API keys:
 Application: Movie Madness Key: fxee5efruku5fre6wdbe7c6r         //Rotten Tomatoes
-
+Youtube Data Api: AIzaSyBWCUE9DE9Ay5tfLMl5CXR-I9cW98Nb8HA
 
 
 
