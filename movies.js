@@ -1,21 +1,34 @@
 postpgrating = function(pgrat) {    //used to push elements to page in getMovieInfo()
-	//code here
+	var divcontainer = document.createElement('DIV');
+	divcontainer.innerHTML = pgrat;
+	document.body.appendChild(divcontainer);
+	
 }
 
 postcriticrating = function(crat) { //used to push elements to page in getMovieInfo()
-	//code here
+	var divcontainer = document.createElement('DIV');
+	divcontainer.innerHTML = "Critics' score: " + crat;
+	document.body.appendChild(divcontainer);
 }
 
 postaudiencerating = function(arat) { //used to push elements to page in getMovieInfo()
-	//code here
+	var divcontainer = document.createElement('DIV');
+	divcontainer.innerHTML = "Audience score: " + arat;
+	document.body.appendChild(divcontainer);
 }
 
 postsynopsis = function(_synopsis) { //used to push elements to page in getMovieInfo()
-	//code here
+	if (_synopsis == "")
+		_synopsis = "No synopsis available for this movie";
+	var divcontainer = document.createElement('DIV');
+	divcontainer.innerHTML = "Synopsis: " + _synopsis;
+	document.body.appendChild(divcontainer);
 }
 
 postmoviepic = function(movpic) { //used to push elements to page in getMovieInfo()
-	//code here
+	var divcontainer = document.createElement('DIV');
+	divcontainer.innerHTML = "<img src=" + movpic + "></img>";
+	document.body.appendChild(divcontainer);
 }
 
 
