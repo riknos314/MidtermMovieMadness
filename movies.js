@@ -51,6 +51,8 @@ getYouTubeTrailer = function(moviename) {  //Equivalent of getMovieInfo(), but f
 				var infodict = JSON.parse(request.responseText);
 				
 				console.log(infodict);
+				
+				console.log(infodict.items[0].snippet['title']);
 			}
 	}
 	var movienamelist = moviename.split(" ");

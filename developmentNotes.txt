@@ -29,3 +29,9 @@ HTML CREATION CONVENTIONS
 
 	for each element, make a <div> tag, then place the content within the appropriate tags inside of said <div>
 		This is to allow for more flexibility in CSS styling.
+		
+		
+<head>
+	<script src="movies.js" type="text/javascript"></script>
+	<link rel="stylesheet" href="movies.css" type="text/css"></link>
+</head>

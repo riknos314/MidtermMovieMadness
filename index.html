@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script src="movies.js" type="text/javascript"></script>
+	<script>
+		var head= document.getElementsByTagName('head')[0];
+		var script= document.createElement('script');
+		script.type= 'text/javascript';
+ 		script.src= 'movies.js';
+ 		head.appendChild(script);
+	</script>
 	<link rel="stylesheet" href="movies.css" type="text/css"></link>
 </head>
 
