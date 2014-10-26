@@ -136,26 +136,34 @@ getMovieInfo = function(data) {   //Gets Rotten Tomatoes info
 						moviematch = true
 						break;
 					}
-				
+				}
 				if (!moviematch)                 //Just in case user enters a type or not exactly the name of the movie
 					movie = infodict.movies[0];	
-				}
+				
 				var pgrating = movie.mpaa_rating;			          //Get movie info
 				var criticrating = movie.ratings["critics_score"];			
 				var audiencerating = movie.ratings["audience_score"];
 				var synopsis = movie.synopsis;
-				var moviepic = movie.posters["thumbnail"]
+				var moviepic = movie.posters["original"]
 				var mtitle = movie.title;
-				
+			}
+			else { //If movie is not found
+				var pgrating = "N/A"	
+				var criticrating = "N/A"		
+				var audiencerating = "N/A"
+				var synopsis = "N/A"
+				var moviepic = "http://www.kushmha.com/ProjectsImage/DataNotFound.jpg"
+				var mtitle = "Sorry, movie not found"
+			}
 				posttitle(mtitle);
 				postpgrating(pgrating);                   //Pushing returned elements onto page
 				postcriticrating(criticrating);
 				postaudiencerating(audiencerating);
 				postsynopsis(synopsis);
 				postmoviepic(moviepic);
-				
-				getYouTubeTrailer(mtitle);      //Calls YouTube-vid-creator function
-			}
+				if (moviefound)
+					getYouTubeTrailer(mtitle);      //Calls YouTube-vid-creator function
+			
 	
 
 }
