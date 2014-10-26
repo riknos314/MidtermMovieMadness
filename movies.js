@@ -40,9 +40,13 @@ postmoviepic = function(movpic) { //used to push elements to page in getMovieInf
 }
 
 
+createYouTubeVideo = function(vidID) {
+	//code to push video here
+}
 
-getYouTubeTrailer = function(moviename) {  //Equivalent of getMovieInfo(), but for Youtube trailer
-	//This is just a skeleton function right now
+
+
+getYouTubeTrailer = function(moviename) {  //Retrieves video ID of youtube video
 	var request = new XMLHttpRequest();
 	
 	request.onreadystatechange = function() {
@@ -50,12 +54,14 @@ getYouTubeTrailer = function(moviename) {  //Equivalent of getMovieInfo(), but f
 			if (request.status == 200) {
 				var infodict = JSON.parse(request.responseText);
 				
-				console.log(infodict);
+				var videoid = infodict.items[0].id.videoId;
 				
-				console.log(infodict.items[0].snippet['title']);
+				console.log(videoid);
+				
+				createYouTubeVideo(videoid);         //pass video id to function that pushes video onto page
 			}
 	}
-	var movienamelist = moviename.split(" ");
+	var movienamelist = moviename.split(" ");    //create searchQuery string
 	var searchQuery = movienamelist.shift();
 	while (movienamelist.length != 0) {
 		searchQuery = searchQuery + "+" + movienamelist.shift();
@@ -71,23 +77,29 @@ getYouTubeTrailer = function(moviename) {  //Equivalent of getMovieInfo(), but f
 	request.send(null);
 }
 
+createRTurl = function() {      //creates URL to insert dynamically into script tags in HTML
+	var movietitle = document.getElementById('movietitle'); //create query string in URI format for targetURL
+	var wordlist = movietitle.value.split(" ");
+	var searchQuery = wordlist.shift();
+	while (wordlist.length != 0) {
+			searchQuery = searchQuery + "+" + wordlist.shift();
+		}
+	
+	var targetURL = 'http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=fxee5efruku5fre6wdbe7c6r&q=' + searchQuery + '&page_limit=8&callback=getMovieInfo';
+	var rtscript = document.createElement('SCRIPT');
+	rtscript.type = 'text/javascript';
+	rtscript.src = targetURL;
+	document.head.appendChild(rtscript);
+		
+}
 
 
 
 
 
-
-
-getMovieInfo = function() {   //Gets Rotten Tomatoes info
-
-	var request = new XMLHttpRequest();
-
-    request.onreadystatechange = function() {
-
-	if (request.readyState == 4)
-		if (request.status == 200) {    //build dictionary in this block
+getMovieInfo = function(data) {   //Gets Rotten Tomatoes info
 				
-			var infodict = JSON.parse(request.responseText);     //this holds all the movie info
+			var infodict = data;     //this holds all the movie info
 			
 			var moviefound = true;                              //to test if a movie is found or not
 			if (infodict.total == 0)
@@ -122,21 +134,6 @@ getMovieInfo = function() {   //Gets Rotten Tomatoes info
 				
 				getYouTubeTrailer(movietitle.value);      //Calls YouTube-vid-creator function
 			}
-        }
-	}
-
-	var movietitle = document.getElementById('movietitle'); //create query string in URI format for targetURL
-	var wordlist = movietitle.value.split(" ");
-	var searchQuery = wordlist.shift();
-		while (wordlist.length != 0) {
-			searchQuery = searchQuery + "+" + wordlist.shift();
-		}
-	
-	var targetURL = 'http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=fxee5efruku5fre6wdbe7c6r&q=' + searchQuery + '&page_limit=8';
-		
-	request.open('GET', targetURL, true);
-	
-	request.send(null);
 	
 
 }
