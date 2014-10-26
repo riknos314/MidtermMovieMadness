@@ -40,8 +40,23 @@ postmoviepic = function(movpic) { //used to push elements to page in getMovieInf
 }
 
 
-createYouTubeVideo = function(vidID) {
-	//code to push video here
+postYouTubeVideo = function(vidID) {
+	var ifrm = document.createElement("IFRAME");
+	var ytid = vidID;
+
+	ifrm.setAttribute("src","https://www.youtube.com/embed/" + tyid);
+	ifrm.id = "ytplayer";
+	ifrm.type = "text/html";
+	ifrm.width = "640";
+	ifrm.height = "360";
+
+
+	document.body.appendChild(ifrm);
+/*	
+<iframe id="ytplayer" type="text/html" width="640" height="360"
+			src="https://www.youtube.com/embed/M7lc1UVf-VE"
+			frameborder="0" allowfullscreen>
+			*/
 }
 
 
