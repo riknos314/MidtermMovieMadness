@@ -40,8 +40,11 @@ postmoviepic = function(movpic) { //used to push elements to page in getMovieInf
 }
 
 
-createYouTubeVideo = function(vidID) {
-	//code to push video here
+postYouTubeVideo = function(vidID) {
+	var ifrm = document.createElement("IFRAME");
+	var ytid = vidID;
+
+	ifrm.innerHTML = "this is cool";
 }
 
 
