@@ -44,11 +44,19 @@ postYouTubeVideo = function(vidID) {
 	var ifrm = document.createElement("IFRAME");
 	var ytid = vidID;
 
-	var ifrmString = '<iframe id="ytplayer" type="text/html" width="640" height="360"
-			src="https://www.youtube.com/embed/'M7lc1UVf-VE"
-			'frameborder="0" allowfullscreen>'
+	ifrm.setAttribute("src","https://www.youtube.com/embed/" + tyid);
+	ifrm.id = "ytplayer";
+	ifrm.type = "text/html";
+	ifrm.width = "640";
+	ifrm.height = "360";
 
-	ifrm.innerHTML = "this is cool";
+
+	document.body.appendChild(ifrm);
+/*	
+<iframe id="ytplayer" type="text/html" width="640" height="360"
+			src="https://www.youtube.com/embed/M7lc1UVf-VE"
+			frameborder="0" allowfullscreen>
+			*/
 }
 
 
