@@ -73,7 +73,7 @@ getYouTubeTrailer = function(moviename) {  //Retrieves video ID of youtube video
 				
 				console.log(videoid);
 				
-				createYouTubeVideo(videoid);         //pass video id to function that pushes video onto page
+				postYouTubeVideo(videoid);         //pass video id to function that pushes video onto page
 			}
 	}
 	var movienamelist = moviename.split(" ");    //create searchQuery string
