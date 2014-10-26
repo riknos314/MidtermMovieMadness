@@ -10,7 +10,7 @@ posttitle = function(mvtitle) {    //used to push elements to page in getMovieIn
 postpgrating = function(pgrat) {    //used to push elements to page in getMovieInfo()
 	var divcontainer = document.createElement('DIV');
 	var parcontainer = document.createElement('p');
-	parcontainer.innerHTML = pgrat;
+	parcontainer.innerHTML = "Rating: " + pgrat;
 	divcontainer.appendChild(parcontainer);
 	document.body.appendChild(divcontainer);
 	
