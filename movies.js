@@ -1,3 +1,12 @@
+posttitle = function(mvtitle) {    //used to push elements to page in getMovieInfo()
+	var divcontainer = document.createElement('DIV');
+	var parcontainer = document.createElement('p');
+	parcontainer.innerHTML = mvtitle;
+	divcontainer.appendChild(parcontainer);
+	document.body.appendChild(divcontainer);
+	
+}
+
 postpgrating = function(pgrat) {    //used to push elements to page in getMovieInfo()
 	var divcontainer = document.createElement('DIV');
 	var parcontainer = document.createElement('p');
@@ -53,11 +62,7 @@ postYouTubeVideo = function(vidID) {
 
 
 	document.body.appendChild(ifrm);
-/*	
-<iframe id="ytplayer" type="text/html" width="640" height="360"
-			src="https://www.youtube.com/embed/M7lc1UVf-VE"
-			frameborder="0" allowfullscreen>
-			*/
+
 }
 
 
@@ -140,15 +145,16 @@ getMovieInfo = function(data) {   //Gets Rotten Tomatoes info
 				var audiencerating = movie.ratings["audience_score"];
 				var synopsis = movie.synopsis;
 				var moviepic = movie.posters["thumbnail"]
-			
+				var mtitle = movie.title;
 				
+				posttitle(mtitle);
 				postpgrating(pgrating);                   //Pushing returned elements onto page
 				postcriticrating(criticrating);
 				postaudiencerating(audiencerating);
 				postsynopsis(synopsis);
 				postmoviepic(moviepic);
 				
-				getYouTubeTrailer(movietitle.value);      //Calls YouTube-vid-creator function
+				getYouTubeTrailer(mtitle);      //Calls YouTube-vid-creator function
 			}
 	
 
