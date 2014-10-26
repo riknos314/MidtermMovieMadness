@@ -44,6 +44,10 @@ postYouTubeVideo = function(vidID) {
 	var ifrm = document.createElement("IFRAME");
 	var ytid = vidID;
 
+	var ifrmString = '<iframe id="ytplayer" type="text/html" width="640" height="360"
+			src="https://www.youtube.com/embed/'M7lc1UVf-VE"
+			'frameborder="0" allowfullscreen>'
+
 	ifrm.innerHTML = "this is cool";
 }
 
@@ -121,13 +125,12 @@ getMovieInfo = function(data) {   //Gets Rotten Tomatoes info
 				}
 				if (!moviematch)                 //Just in case user enters a type or not exactly the name of the movie
 					movie = infodict.movies[0];	
-				console.log(movie);
+				
 				var pgrating = movie.mpaa_rating;			          //Get movie info
 				var criticrating = movie.ratings["critics_score"];			
 				var audiencerating = movie.ratings["audience_score"];
 				var synopsis = movie.synopsis;
 				var moviepic = movie.posters["thumbnail"]
-				var mtitle = movie.title
 			
 				
 				postpgrating(pgrating);                   //Pushing returned elements onto page
