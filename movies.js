@@ -42,9 +42,10 @@ postmoviepic = function(movpic) { //used to push elements to page in getMovieInf
 
 postYouTubeVideo = function(vidID) {
 	var ifrm = document.createElement("IFRAME");
-	var ytid = vidID;
+	
+	console.log(vidID);
 
-	ifrm.setAttribute("src","https://www.youtube.com/embed/" + tyid);
+	ifrm.setAttribute("src","https://www.youtube.com/embed/" + vidID);
 	ifrm.id = "ytplayer";
 	ifrm.type = "text/html";
 	ifrm.width = "640";
