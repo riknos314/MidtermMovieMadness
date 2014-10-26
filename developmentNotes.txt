@@ -31,7 +31,3 @@ HTML CREATION CONVENTIONS
 		This is to allow for more flexibility in CSS styling.
 		
 		
-<head>
-	<script src="movies.js" type="text/javascript"></script>
-	<link rel="stylesheet" href="movies.css" type="text/css"></link>
-</head>
