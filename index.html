@@ -1,21 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<script>
-		var head= document.getElementsByTagName('head')[0];
-		var script= document.createElement('script');
-		script.type= 'text/javascript';
- 		script.src= 'movies.js';
- 		head.appendChild(script);
-	</script>
+	<script src="movies2.js" type="text/javascript"></script>
 	<link rel="stylesheet" href="movies.css" type="text/css"></link>
 </head>
-
 <body>
 	<header>Midterm Movie Madness</header>
 	
 	<section> <!-- the main section for information -->
-		<button onclick="getMovieInfo()" >Click me</button>
+		<button onclick="createRTurl()" >Click me</button>
 		<input type="text" id="movietitle"></input>
 
 	</section>
