@@ -40,9 +40,13 @@ postmoviepic = function(movpic) { //used to push elements to page in getMovieInf
 }
 
 
+createYouTubeVideo = function(vidID) {
+	//code to push video here
+}
 
-getYouTubeTrailer = function(moviename) {  //Equivalent of getMovieInfo(), but for Youtube trailer
-	//This is just a skeleton function right now
+
+
+getYouTubeTrailer = function(moviename) {  //Retrieves video ID of youtube video
 	var request = new XMLHttpRequest();
 	
 	request.onreadystatechange = function() {
@@ -50,12 +54,14 @@ getYouTubeTrailer = function(moviename) {  //Equivalent of getMovieInfo(), but f
 			if (request.status == 200) {
 				var infodict = JSON.parse(request.responseText);
 				
-				console.log(infodict);
+				var videoid = infodict.items[0].id.videoId;
 				
-				console.log(infodict.items[0].snippet['title']);
+				console.log(videoid);
+				
+				createYouTubeVideo(videoid);         //pass video id to function that pushes video onto page
 			}
 	}
-	var movienamelist = moviename.split(" ");
+	var movienamelist = moviename.split(" ");    //create searchQuery string
 	var searchQuery = movienamelist.shift();
 	while (movienamelist.length != 0) {
 		searchQuery = searchQuery + "+" + movienamelist.shift();
