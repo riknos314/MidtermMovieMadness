@@ -3,16 +3,19 @@ posttitle = function(mvtitle) {    //used to push elements to page in getMovieIn
 	var parcontainer = document.createElement('p');
 	parcontainer.innerHTML = mvtitle;
 	divcontainer.appendChild(parcontainer);
-	document.body.appendChild(divcontainer);
+	document.getElementById('maininfo').appendChild(divcontainer);
 	
 }
 
 postpgrating = function(pgrat) {    //used to push elements to page in getMovieInfo()
 	var divcontainer = document.createElement('DIV');
 	var parcontainer = document.createElement('p');
+	var ratingsdiv = document.createElement('DIV');
+	ratingsdiv.id = "ratingshere";
 	parcontainer.innerHTML = "Rating: " + pgrat;
 	divcontainer.appendChild(parcontainer);
-	document.body.appendChild(divcontainer);
+	ratingsdiv.appendChild(divcontainer);
+	document.getElementById('sideinfo').appendChild(ratingsdiv);
 	
 }
 
@@ -21,7 +24,7 @@ postcriticrating = function(crat) { //used to push elements to page in getMovieI
 	var parcontainer = document.createElement('p');
 	parcontainer.innerHTML = "Critics' score: " + crat;
 	divcontainer.appendChild(parcontainer);
-	document.body.appendChild(divcontainer);
+	document.getElementById('ratingshere').appendChild(divcontainer);
 }
 
 postaudiencerating = function(arat) { //used to push elements to page in getMovieInfo()
@@ -29,7 +32,7 @@ postaudiencerating = function(arat) { //used to push elements to page in getMovi
 	var parcontainer = document.createElement('p');
 	parcontainer.innerHTML = "Audience score: " + arat;
 	divcontainer.appendChild(parcontainer);
-	document.body.appendChild(divcontainer);
+	document.getElementById('ratingshere').appendChild(divcontainer);
 }
 
 postsynopsis = function(_synopsis) { //used to push elements to page in getMovieInfo()
@@ -39,13 +42,13 @@ postsynopsis = function(_synopsis) { //used to push elements to page in getMovie
 	var parcontainer = document.createElement('p');
 	parcontainer.innerHTML = "Synopsis: " + _synopsis;
 	divcontainer.appendChild(parcontainer);
-	document.body.appendChild(divcontainer);
+	document.getElementById('maininfo').appendChild(divcontainer);
 }
 
 postmoviepic = function(movpic) { //used to push elements to page in getMovieInfo()
 	var divcontainer = document.createElement('DIV');
 	divcontainer.innerHTML = "<img src=" + movpic + "></img>";
-	document.body.appendChild(divcontainer);
+	document.getElementById('sideinfo').appendChild(divcontainer);
 }
 
 
@@ -61,7 +64,7 @@ postYouTubeVideo = function(vidID) {
 	ifrm.height = "360";
 
 
-	document.body.appendChild(ifrm);
+	document.getElementById('maininfo').appendChild(ifrm);
 
 }
 
@@ -156,11 +159,12 @@ getMovieInfo = function(data) {   //Gets Rotten Tomatoes info
 				var mtitle = "Sorry, movie not found"
 			}
 				posttitle(mtitle);
+				postmoviepic(moviepic);
 				postpgrating(pgrating);                   //Pushing returned elements onto page
 				postcriticrating(criticrating);
 				postaudiencerating(audiencerating);
 				postsynopsis(synopsis);
-				postmoviepic(moviepic);
+				
 				if (moviefound)
 					getYouTubeTrailer(mtitle);      //Calls YouTube-vid-creator function
 			
