@@ -69,18 +69,85 @@ postYouTubeVideo = function(vidID) {
 
 }
 
-getMovieTheatre = function() {
+posttheatreinfo = function(theatrenames) { //Used to push info to page from Gracenote API
+	var tname1;
+	var tname2 = -1;
+	var tname3 = -1;
+	if (theatrenames.length > 3) {
+		tname1 = theatrenames[0];
+		tname2 = theatrenames[1];
+		tname3 = theatrenames[3];
+	}
+	else {
+		tname1 = theatrenames.shift();
+		if (theatrenames.length != 0)
+			tname2 = theatrenames.shift();
+		if (theatrenames.length != 0)
+			tname3 = theatrenames.shift();	
+	}
+	var divcontainer = document.createElement('DIV');
+	var parcontainer = document.createElement('p');
+	parcontainer.innerHTML = tname1;
+	divcontainer.appendChild(parcontainer);
+	if (tname2 != -1) {
+		var parcontainer2 = document.createElement('p');
+		parcontainer2.innerHTML = tname2;
+		divcontainer.appendChild(parcontainer2);
+	}
+	if (tname3 != -1) {
+		var parcontainer3 = document.createElement('p');
+		parcontainer3.innerHTML = tname3;
+		divcontainer.appendChild(parcontainer3);
+	}
+	document.body.appendChild(divcontainer);
+		
+	
+}
+
+getMovieTheatre = function(mvtitle) {           //"Movie theaters near you" info
 	var request = new XMLHttpRequest();
 	
 	request.onreadystatechange = function() {
 		if (request.readyState == 4)
 			if (request.status == 200) {
 				var infodict = JSON.parse(request.responseText);
-				var moviesexist = true;
+				var moviesExist = true;
 				if (infodict == [])
-					moviesexist = false;
+					moviesExist = false;
 				
-				
+				var movie;    //Our movie object
+
+			
+				if (moviesExist) {
+					moviefound = false;
+					for (var i=0; i<infodict.length; i++) {  //Find the correct movie
+						if (infodict[i].title == mvtitle) {
+							console.log(1);
+							movie = infodict[i].title;
+							moviefound = true;
+						}
+					}
+					
+					if (moviefound) {    //Correct movie object has been found; time to find the theaters
+						var theatrelist = [];  //initialize array to hold names of theaters
+						for (var i=0; i<movie.showtimes.length; i++) {  //Check to make sure theatre name isn't in array; if not, then add it
+							var inArray = false;
+							for (j=0; j<theatrelist.length; i++) {
+								if (movie.showtimes[i].theatre.name = theatrelist[j])
+									inArray = true;
+							}
+							if (!inArray)
+								theatrelist.push(movie.showtimes[i].theatre.name);
+						}
+					
+					}
+					else  //Movie has not been found; push error message instead
+						var theatrelist = ["Sorry, this movie is not playing near you."];
+				}
+				else    //Movie information doesn't exist; push error message instead
+					var theatrelist = ["Sorry, no movie theatre information available for your area."];
+			
+			posttheatreinfo(theatrelist);
 			}
 	}			
 	
@@ -98,7 +165,10 @@ getMovieTheatre = function() {
 	} 
 
 	today = String(yyyy + '-' + mm + '-' + dd);	
-	var targetURL = "http://data.tmsapi.com/v1/movies/showings?startDate=2014-10-28&zip=55371&api_key=mrjwfnn2xpks87j8rtpbgw6m";			
+	
+	var zipcode = document.getElementById
+	
+	var targetURL = "http://data.tmsapi.com/v1/movies/showings?startDate=" + today + "&zip=" + zipcode + "&api_key=mrjwfnn2xpks87j8rtpbgw6m";			
 	request.open('GET', targetURL, true);
 	
 	request.send(null);
@@ -198,7 +268,7 @@ getMovieInfo = function(data) {   //Gets Rotten Tomatoes info
 				
 				if (moviefound)
 					getYouTubeTrailer(mtitle);      //Calls YouTube-vid-creator function
-					getMovieTheatre();
+					getMovieTheatre(mtitle);
 			
 	
 
