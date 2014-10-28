@@ -123,7 +123,8 @@ getMovieTheatre = function(mvtitle) {           //"Movie theaters near you" info
 					for (var i=0; i<infodict.length; i++) {  //Find the correct movie
 						if (infodict[i].title == mvtitle) {
 							console.log(1);
-							movie = infodict[i].title;
+							movie = infodict[i];
+							console.log(movie);
 							moviefound = true;
 						}
 					}
@@ -133,6 +134,7 @@ getMovieTheatre = function(mvtitle) {           //"Movie theaters near you" info
 						for (var i=0; i<movie.showtimes.length; i++) {  //Check to make sure theatre name isn't in array; if not, then add it
 							var inArray = false;
 							for (j=0; j<theatrelist.length; i++) {
+								console.log(String(movie.showtimes[i].theatre['name']));
 								if (movie.showtimes[i].theatre.name = theatrelist[j])
 									inArray = true;
 							}
@@ -166,7 +168,7 @@ getMovieTheatre = function(mvtitle) {           //"Movie theaters near you" info
 
 	today = String(yyyy + '-' + mm + '-' + dd);	
 	
-	var zipcode = document.getElementById
+	var zipcode = document.getElementById('zipcode').value;
 	
 	var targetURL = "http://data.tmsapi.com/v1/movies/showings?startDate=" + today + "&zip=" + zipcode + "&api_key=mrjwfnn2xpks87j8rtpbgw6m";			
 	request.open('GET', targetURL, true);
@@ -183,9 +185,7 @@ getYouTubeTrailer = function(moviename) {  //Retrieves video ID of youtube video
 				var infodict = JSON.parse(request.responseText);
 				
 				var videoid = infodict.items[0].id.videoId;
-				
-				console.log(videoid);
-				
+								
 				postYouTubeVideo(videoid);         //pass video id to function that pushes video onto page
 			}
 	}

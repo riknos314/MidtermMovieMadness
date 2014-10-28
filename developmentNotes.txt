@@ -16,7 +16,7 @@ Also naming conventions go here.
 	pretty heavily, so you can see what I mean.
 
 
-TODO: Hitting enter also calls the function
+TODO: Hitting enter also calls the function; reloading problem
 
 
 API keys:
