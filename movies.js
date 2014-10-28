@@ -92,7 +92,6 @@ getYouTubeTrailer = function(moviename) {  //Retrieves video ID of youtube video
 	}
 	searchQuery = searchQuery + "+Trailer";
 	
-	console.log(searchQuery);
 	
 	var targetURL = "https://www.googleapis.com/youtube/v3/search?part=snippet&q=" + searchQuery + "&type=video&videoEmbeddable=true&key=AIzaSyBWCUE9DE9Ay5tfLMl5CXR-I9cW98Nb8HA";
 		
@@ -116,8 +115,6 @@ createRTurl = function() {      //creates URL to insert dynamically into script 
 	document.head.appendChild(rtscript);
 		
 }
-
-
 
 
 
