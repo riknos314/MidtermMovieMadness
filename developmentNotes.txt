@@ -20,7 +20,7 @@ Also naming conventions go here.
 API keys:
 Application: Movie Madness Key: fxee5efruku5fre6wdbe7c6r         //Rotten Tomatoes
 Youtube Data Api: AIzaSyBWCUE9DE9Ay5tfLMl5CXR-I9cW98Nb8HA
-
+Gracenote API: mrjwfnn2xpks87j8rtpbgw6m
 
 
 
@@ -29,5 +29,3 @@ HTML CREATION CONVENTIONS
 
 	for each element, make a <div> tag, then place the content within the appropriate tags inside of said <div>
 		This is to allow for more flexibility in CSS styling.
-		
-		
