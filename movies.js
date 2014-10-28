@@ -1,3 +1,4 @@
+
 posttitle = function(mvtitle) {    //used to push elements to page in getMovieInfo()
 	var divcontainer = document.createElement('DIV');
 	var parcontainer = document.createElement('p');
@@ -68,7 +69,40 @@ postYouTubeVideo = function(vidID) {
 
 }
 
+getMovieTheatre = function() {
+	var request = new XMLHttpRequest();
+	
+	request.onreadystatechange = function() {
+		if (request.readyState == 4)
+			if (request.status == 200) {
+				var infodict = JSON.parse(request.responseText);
+				var moviesexist = true;
+				if (infodict == [])
+					moviesexist = false;
+				
+				
+			}
+	}			
+	
+	var today = new Date();     //create today's date
+	var dd = today.getDate();
+	var mm = today.getMonth()+1;
+	var yyyy = today.getFullYear();
 
+	if(dd<10) {
+	    dd='0'+dd
+	} 
+
+	if(mm<10) {
+	    mm='0'+mm
+	} 
+
+	today = String(yyyy + '-' + mm + '-' + dd);	
+	var targetURL = "http://data.tmsapi.com/v1/movies/showings?startDate=2014-10-28&zip=55371&api_key=mrjwfnn2xpks87j8rtpbgw6m";			
+	request.open('GET', targetURL, true);
+	
+	request.send(null);
+}
 
 getYouTubeTrailer = function(moviename) {  //Retrieves video ID of youtube video
 	var request = new XMLHttpRequest();
@@ -164,6 +198,7 @@ getMovieInfo = function(data) {   //Gets Rotten Tomatoes info
 				
 				if (moviefound)
 					getYouTubeTrailer(mtitle);      //Calls YouTube-vid-creator function
+					getMovieTheatre();
 			
 	
 
