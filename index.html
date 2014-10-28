@@ -6,23 +6,32 @@
 	<title>Midterm Movie Madness</title>
 </head>
 <body>
-	<header>Midterm Movie Madness</header>
-	
-	<section> <!-- the main section for information -->
-		<button onclick="createRTurl()" >Click me</button>
-		<input type="text" id="movietitle"></input>
+	<div id = "page">
+		<header><h1>Midterm Movie Madness</h1></header>
+		<nav>
+			<ul>
+				<li><a href="index.html">Home</a></li>
+				<li><a href="disclaimer.html">Disclaimer</a></li>
+				<li><a href="aboutus.html">About Us</a></li>
+			</ul>
+		</nav>
+		<div id = "inputsection"> <!-- buttons and things -->		
+			<input type="text" id="movietitle"></input>
+			<button onclick="createRTurl()" >Click me</button>
 
-	</section>
+		</div>  
 
-	<aside> <!-- in case we want to put stuff on the side -->
-
-	</aside>
-
-
-
+		<div id = "content"> <!-- content generated here -->
+			<div id="sideinfo">
+				
+			</div>
+			<div id="maininfo">
+				
+			</div>
+		</div>
 
 	<footer>&#169;2014 Isaiah Mayerchak &#38; Kirby Olson</footer>
-
+	</div>
 
 </body>
 </html>
