@@ -43,7 +43,7 @@ nav {
 nav li {
 	display: inline-block;
 	float: left;
-	height: 36px;
+	height: 30px;
 	width: 33%;
 	padding-top: 5px;
 }
@@ -60,7 +60,6 @@ nav li a:visited {
 }
 nav li:hover {
 	background: #CCA300;
-	height: 30px;
 }
 
 
