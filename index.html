@@ -6,7 +6,7 @@
 	<title>Midterm Movie Madness</title>
 </head>
 <body>
-	<div id = "page">
+	<div id = "page">  <!-- page container -->
 		<header><h1>Midterm Movie Madness</h1></header>
 		<nav>
 			<ul>
@@ -22,17 +22,78 @@
 
 		</div>  
 
-		<div id = "content"> <!-- content generated here -->
-			<div id="sideinfo">
+		<div id = "content"> <!-- content container -->
+			<div id="sideinfo"> <!-- side information box container -->
+				<div class="sideContent" id="Poster"> <!-- container level -->
+					<div class="containerHeader"> <!-- container header level -->
+						<h2>Poster</h2>  <!-- container title -->
+					</div>
+					<!-- poster here -->
+				</div>
 				
-			</div>
-			<div id="maininfo">
-				
-			</div>
-		</div>
+
+				<div class="sideContent" id="mpaa"> 
+					<div class="containerHeader">
+						<h2>Rated</h2>					
+					</div>
+					<!-- mpaa rating here -->
+				</div>
+
+				<div class="sideContent" id="ratings">
+					<div class="containerHeader">
+						<h2>Ratings</h2>
+					</div>
+					<div id="criticRating">
+						<h3>Critic</h3>
+						<!-- Critic rating here -->
+					</div>
+					<div id="audienceRating">
+						<h3>Audience</h3>
+						<!-- audience rating here -->
+					</div>
+					
+				</div>
+
+				<div class="sideContent" id="theaters">
+					<div class="containerHeader">
+						<h2>Theaters near me</h2>
+					</div>
+					<!-- theater list here -->
+				</div>
+
+			</div>  <!-- end side container -->
+
+
+
+			<div id="maininfo">  <!-- main information box containter -->
+
+				<div class="mainContent" id="title">
+					<div class="containerHeader">
+						<h2>Movie Title</h2>				
+					</div>
+					<!-- title here -->
+				</div>
+
+				<div class="mainContent" id="synopsis">
+					<div class="containerHeader">
+						<h2>Synopsis</h2>				
+					</div>
+					<!-- synopsis here -->
+				</div>
+
+				<div class="mainContent" id="trailer">
+					<div class="containerHeader">
+						<h2>Trailer</h2>				
+					</div>
+					<!-- trailer iframe here -->
+				</div>
+
+
+			</div> <!-- end main container -->
+		</div> <!-- end content container -->
 
 	<footer>&#169;2014 Isaiah Mayerchak &#38; Kirby Olson</footer>
-	</div>
+	</div> <!-- end page container -->
 
 </body>
 </html>
