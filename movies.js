@@ -256,6 +256,9 @@ getMovieInfo = function(data) {   //Gets Rotten Tomatoes info
 				var audiencerating = movie.ratings["audience_score"];
 				var synopsis = movie.synopsis;
 				var moviepic = movie.posters["detailed"]
+				var temp = moviepic.substr(0, moviepic.length-7); //Get detailed pic instead of thumbnail
+				temp = temp + "det.jpg"
+				moviepic = temp;
 				var mtitle = movie.title;
 			}
 			else { //If movie is not found
