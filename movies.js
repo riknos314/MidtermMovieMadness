@@ -2,6 +2,7 @@
 posttitle = function(mvtitle) {    //used to push elements to page in getMovieInfo()
 	var divcontainer = document.createElement('DIV');
 	var parcontainer = document.createElement('p');
+	divtitle.id = "titleContainer";
 	parcontainer.innerHTML = mvtitle;
 	divcontainer.appendChild(parcontainer);
 	document.getElementById('maininfo').appendChild(divcontainer);
@@ -12,6 +13,7 @@ postpgrating = function(pgrat) {    //used to push elements to page in getMovieI
 	var divcontainer = document.createElement('DIV');
 	var parcontainer = document.createElement('p');
 	var ratingsdiv = document.createElement('DIV');
+	divcontainer.id = "pgContainer";
 	ratingsdiv.id = "ratingshere";
 	parcontainer.innerHTML = "Rating: " + pgrat;
 	divcontainer.appendChild(parcontainer);
@@ -23,6 +25,7 @@ postpgrating = function(pgrat) {    //used to push elements to page in getMovieI
 postcriticrating = function(crat) { //used to push elements to page in getMovieInfo()
 	var divcontainer = document.createElement('DIV');
 	var parcontainer = document.createElement('p');
+	divcontainer.id = "criticContainer";
 	parcontainer.innerHTML = "Critics' score: " + crat;
 	divcontainer.appendChild(parcontainer);
 	document.getElementById('ratingshere').appendChild(divcontainer);
@@ -31,6 +34,7 @@ postcriticrating = function(crat) { //used to push elements to page in getMovieI
 postaudiencerating = function(arat) { //used to push elements to page in getMovieInfo()
 	var divcontainer = document.createElement('DIV');
 	var parcontainer = document.createElement('p');
+	divcontainer.id = "audienceContainer";
 	parcontainer.innerHTML = "Audience score: " + arat;
 	divcontainer.appendChild(parcontainer);
 	document.getElementById('ratingshere').appendChild(divcontainer);
@@ -41,6 +45,7 @@ postsynopsis = function(_synopsis) { //used to push elements to page in getMovie
 		_synopsis = "No synopsis available for this movie";
 	var divcontainer = document.createElement('DIV');
 	var parcontainer = document.createElement('p');
+	divcontainer.id = "synopsisContainer";
 	parcontainer.innerHTML = "Synopsis: " + _synopsis;
 	divcontainer.appendChild(parcontainer);
 	document.getElementById('maininfo').appendChild(divcontainer);
@@ -48,6 +53,7 @@ postsynopsis = function(_synopsis) { //used to push elements to page in getMovie
 
 postmoviepic = function(movpic) { //used to push elements to page in getMovieInfo()
 	var divcontainer = document.createElement('DIV');
+	divcontainer.id = "pictureContainer";
 	divcontainer.innerHTML = "<img src=" + movpic + "></img>";
 	document.getElementById('sideinfo').appendChild(divcontainer);
 }
@@ -55,6 +61,8 @@ postmoviepic = function(movpic) { //used to push elements to page in getMovieInf
 
 postYouTubeVideo = function(vidID) {
 	var ifrm = document.createElement("IFRAME");
+	var divcontainer = document.createElement("DIV");
+	divcontainer.id = "ytContainer";
 	
 	console.log(vidID);
 
