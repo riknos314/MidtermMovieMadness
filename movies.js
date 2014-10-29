@@ -1,48 +1,62 @@
 posttitle = function(mvtitle) {    //used to push elements to page in getMovieInfo()
 	var parcontainer = document.createElement('p');
+	var cont = document.getElementById('titleContainer');
+	cont.innerHTML = "";
 	parcontainer.innerHTML = mvtitle;
-	document.getElementById('title').appendChild(parcontainer);
+	cont.appendChild(parcontainer);
 
 }
 
 postpgrating = function(pgrat) {    //used to push elements to page in getMovieInfo()
 	var parcontainer = document.createElement('p');
+	var cont = document.getElementById('mpaaContainer');
+	cont.innerHTML = "";
 	parcontainer.innerHTML = pgrat;
-	document.getElementById('mpaa').appendChild(parcontainer);
+	cont.appendChild(parcontainer);
 
 }
 
 postcriticrating = function(crat) { //used to push elements to page in getMovieInfo()
 	var parcontainer = document.createElement('p');
+	var cont = document.getElementById('criticContainer');
+	cont.innerHTML = "";
 	parcontainer.innerHTML = crat;
-	document.getElementById('criticRating').appendChild(parcontainer);
+	cont.appendChild(parcontainer);
 }
 
 postaudiencerating = function(arat) { //used to push elements to page in getMovieInfo()
 	var parcontainer = document.createElement('p');
+	var cont = document.getElementById('audienceContainer');
+	cont.innerHTML = "";
 	parcontainer.innerHTML = arat;
-	document.getElementById('audienceRating').appendChild(parcontainer);
+	cont.appendChild(parcontainer);
 }
 
 postsynopsis = function(_synopsis) { //used to push elements to page in getMovieInfo()
 	if (_synopsis == "")
 		_synopsis = "No synopsis available for this movie";
 	var parcontainer = document.createElement('p');
+	var cont = document.getElementById('synopsisContainer');
+	cont.innerHTML = "";
 	parcontainer.innerHTML = _synopsis;
-	document.getElementById('synopsis').appendChild(parcontainer);
+	cont.appendChild(parcontainer);
 }
 
 postmoviepic = function(movpic) { //used to push elements to page in getMovieInfo()
 	var divcontainer = document.createElement('DIV');
+	cont = document.getElementById('posterContainer');
+	cont.innerHTML = "";
 	divcontainer.id = "pictureContainer";
 	divcontainer.innerHTML = "<img src=" + movpic + "></img>";
-	document.getElementById('Poster').appendChild(divcontainer);
+	cont.appendChild(divcontainer);
 }
 
 
 postYouTubeVideo = function(vidID) {
 	var ifrm = document.createElement("IFRAME");
 	var divcontainer = document.createElement("DIV");
+	var cont = document.getElementById('trailerContainer');
+	cont.innerHTML = "";
 	divcontainer.id = "ytContainer";
 
 	console.log(vidID);
@@ -54,7 +68,7 @@ postYouTubeVideo = function(vidID) {
 	ifrm.height = "360";
 
 
-	document.getElementById('trailer').appendChild(ifrm);
+	cont.appendChild(ifrm);
 
 }
 
@@ -62,6 +76,8 @@ posttheatreinfo = function(theatrenames) { //Used to push info to page from Grac
 	var tname1;
 	var tname2 = -1;
 	var tname3 = -1;
+	var cont = document.getElementById('theaterContainer');
+	cont.innerHTML = "";
 	if (theatrenames.length > 3) {
 		tname1 = theatrenames[0];
 		tname2 = theatrenames[1];
@@ -88,7 +104,7 @@ posttheatreinfo = function(theatrenames) { //Used to push info to page from Grac
 		parcontainer3.innerHTML = tname3;
 		divcontainer.appendChild(parcontainer3);
 	}
-	document.getElementById('theaters').appendChild(divcontainer);
+	cont.appendChild(divcontainer);
 
 
 }
