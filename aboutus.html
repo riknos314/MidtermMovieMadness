@@ -12,6 +12,11 @@
 			height: 150px;
 			width: 180px;
 		}
+		div.bodytext {
+			text-align: left;
+			color: black;
+			padding: 5px;
+		}
 	</style>
 </head>
 <body>
@@ -27,9 +32,16 @@
 
 		<div id = "content"> <!-- content container -->
 			<div id="sideinfo"> <!-- side information box container -->
-				<div class="sideContent" id="Poster"> <!-- container level -->
+				<div class="sideContent">
+					<div class="containerHeader">
+						<h1>Proud parents of this site</h1>
+					</div>
+
+				</div>
+				
+				<div class="sideContent"> <!-- container level -->
 					<div class="containerHeader"> <!-- container header level -->
-						<h2>Kirby</h2>  <!-- container title -->
+						<h2>Kirby Olson</h2>  <!-- container title -->
 					</div>
 					<div class="content">
 						<img id="kirbypic" src="kirby.jpg"></img>
@@ -37,40 +49,12 @@
 				</div>
 
 
-				<div class="sideContent" id="mpaa">
+				<div class="sideContent">
 					<div class="containerHeader">
-						<h2>Isaiah</h2>
+						<h2>Isaiah Mayerchak</h2>
 					</div>
 					<div class="content">
 						<img id="isaiahpic" src="isaiahpic.jpg"></img>
-					</div>
-				</div>
-
-				<div class="sideContent" >
-					<div class="containerHeader" >
-						<h2>MPAA rating</h2>
-					</div>
-					<div>
-						<h4>Critic</h4>
-						<div class="content">
-							<!-- Critic rating here -->
-						</div>
-					</div>
-					<div>
-						<h4>Audience</h4>
-						<div class="content">
-							<!-- audience rating here -->
-						</div>
-					</div>
-
-				</div>
-
-				<div class="sideContent" id="theaters">
-					<div class="containerHeader">
-						<h2>Theaters near me</h2>
-					</div>
-					<div id="theaterContainer" class="content">
-						<!-- theater list here -->
 					</div>
 				</div>
 
@@ -80,21 +64,23 @@
 
 			<div id="maininfo">  <!-- main information box containter -->
 
-				<div class="mainContent" id="title">
+				<div class="mainContent">
 					<div class="containerHeader">
 						<h2>Bios</h2>
 					</div>
-					<div id="titleContainer" class="content">
-						<!-- title here -->
+					<div class="bodytext">
+						<p>Kirby and Isaiah are very nice people.</p>
 					</div>
 				</div>
 
-				<div class="mainContent" id="synopsis">
+				<div class="mainContent">
 					<div class="containerHeader">
-						<h2>Synopsis</h2>
+						<h2>Follow us</h2>
 					</div>
-					<div id="synopsisContainer" class="content">
-						<!-- synopsis here -->
+					<div class="bodytext">
+						<p>If (as if it's even a question) you love our work and would like to see more, feel free to follow us:</p>
+						<p>Kirby's site: <a href="http://riknos314.github.io">riknos314.github.io</a></p>
+						<p>Isaiah's site: <a href="http://flysaiah.github.io">flysaiah.github.io</a></p>
 					</div>
 				</div>
 
