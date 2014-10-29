@@ -86,6 +86,7 @@ h4 {
 
 .content {
 	color: #000000;
+	padding: 10px 15px 10px 15px;
 
 }
 
@@ -142,6 +143,11 @@ h4 {
 
 #synopsis {
 	text-align: left;
+}
+
+#pictureContainer img {
+	height: 100px;
+	width: auto;
 }
 
 input[type=text] {
