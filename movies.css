@@ -12,7 +12,7 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 	background-color: #FFFFFF;
-	border-radius: 5px 5px 0 0;
+	border-radius: 5px 5px 5px 5px;
 }
 
 #content {
@@ -128,16 +128,15 @@ h4 {
 }
 
 
-
 #criticRating {
-	display: inline-block;
+	display: inline-table;
 	width: 95px;
 	margin-top: -20px;
 
 }
 
 #audienceRating {
-	display: inline-block;
+	display: inline-table;
 	width: 95px;
 }
 
@@ -146,7 +145,7 @@ h4 {
 }
 
 #pictureContainer img {
-	height: 100px;
+	height: 250px;
 	width: auto;
 }
 
@@ -159,4 +158,5 @@ footer {
 	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 	font-weight: 300;
 	background-color: #E60000;
+	border-radius: 4px 4px 4px 4px;
 }
