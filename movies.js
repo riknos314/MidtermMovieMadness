@@ -2,7 +2,7 @@
 posttitle = function(mvtitle) {    //used to push elements to page in getMovieInfo()
 	var divcontainer = document.createElement('DIV');
 	var parcontainer = document.createElement('p');
-	divtitle.id = "titleContainer";
+	divcontainer.id = "titleContainer";
 	parcontainer.innerHTML = mvtitle;
 	divcontainer.appendChild(parcontainer);
 	document.getElementById('maininfo').appendChild(divcontainer);
