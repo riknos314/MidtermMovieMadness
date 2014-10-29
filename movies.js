@@ -1,4 +1,3 @@
-
 posttitle = function(mvtitle) {    //used to push elements to page in getMovieInfo()
 	var divcontainer = document.createElement('DIV');
 	var parcontainer = document.createElement('p');
@@ -120,17 +119,14 @@ getMovieTheatre = function(mvtitle) {           //"Movie theaters near you" info
 			if (request.status == 200) {
 				var infodict = JSON.parse(request.responseText);
 				var moviesExist = true;
-				if (infodict == [])
+				if (infodict.length == 0) {
 					moviesExist = false;
-				
+				}
 				var movie;    //Our movie object
-
-			
 				if (moviesExist) {
 					moviefound = false;
 					for (var i=0; i<infodict.length; i++) {  //Find the correct movie
 						if (infodict[i].title == mvtitle) {
-							console.log(1);
 							movie = infodict[i];
 							console.log(movie);
 							moviefound = true;
@@ -141,23 +137,28 @@ getMovieTheatre = function(mvtitle) {           //"Movie theaters near you" info
 						var theatrelist = [];  //initialize array to hold names of theaters
 						for (var i=0; i<movie.showtimes.length; i++) {  //Check to make sure theatre name isn't in array; if not, then add it
 							var inArray = false;
-							for (j=0; j<theatrelist.length; i++) {
-								console.log(String(movie.showtimes[i].theatre['name']));
-								if (movie.showtimes[i].theatre.name = theatrelist[j])
+							for (var j=0; j<theatrelist.length; j++) {
+								if (movie.showtimes[i].theatre.name == theatrelist[j]) {
 									inArray = true;
+								}
 							}
-							if (!inArray)
+							if (!inArray) {
 								theatrelist.push(movie.showtimes[i].theatre.name);
+							}
 						}
-					
 					}
-					else  //Movie has not been found; push error message instead
+					else  {//Movie has not been found; push error message instead
 						var theatrelist = ["Sorry, this movie is not playing near you."];
+					}
 				}
-				else    //Movie information doesn't exist; push error message instead
+				else  {  //Movie information doesn't exist; push error message instead
 					var theatrelist = ["Sorry, no movie theatre information available for your area."];
-			
+				}
 			posttheatreinfo(theatrelist);
+			}
+			else if (request.status == 400) {
+				var theatrelist = ["Sorry, you entered a bad zip code."]
+				posttheatreinfo(theatrelist);
 			}
 	}			
 	
@@ -178,7 +179,7 @@ getMovieTheatre = function(mvtitle) {           //"Movie theaters near you" info
 	
 	var zipcode = document.getElementById('zipcode').value;
 	
-	var targetURL = "http://data.tmsapi.com/v1/movies/showings?startDate=" + today + "&zip=" + zipcode + "&api_key=mrjwfnn2xpks87j8rtpbgw6m";			
+	var targetURL = "http://data.tmsapi.com/v1/movies/showings?startDate=" + today + "&zip=" + zipcode + "&api_key=f5c99t5xymqerdpurwfd7cjt";			
 	request.open('GET', targetURL, true);
 	
 	request.send(null);
