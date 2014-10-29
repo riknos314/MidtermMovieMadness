@@ -1,24 +1,47 @@
+html { -webkit-font-smoothing: antialiased;}
+
+body {
+	background-color: #ead7aa;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-weight: 300;
+	color: #FFFFFF;
+}
+
 #page {
 	width: 1024px;
 	margin-left: auto;
 	margin-right: auto;
+	background-color: #FFFFFF;
+	border-radius: 5px 5px 0 0; 
 }
 
 header {
+	height: 80px;
 	text-align: center;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-weight: 300;
+	background-color: #E60000;
+	margin-top: -20px;
+	margin-bottom: -25px;
+	border-radius: 5px 5px 0 0;
 }
 
 nav {
-	margin-top: 40px;
 	margin-bottom: 0px;
-	margin-left: -40px;
-	height:40px;
+	margin-top: -10px;
+	height: 35px;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-weight: 300;
+	font-size: 18pt;
+	background-color: #FFCC00;
 }
 
 nav li {
 	display: inline-block;
 	float: left;
+	height: 36px;
 	width: 33%;
+	padding-top: 5px;
 }
 nav li a {
 	display: block;
@@ -32,16 +55,47 @@ nav li a:visited {
 	color: ; 
 }
 nav li:hover {
-	background: ;
+	background: #CCA300;
+	height: 30px;
+}
+
+
+h2 {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-weight: 300;
+	font-size: 16pt;
+	margin-left: 20px;
+}
+
+h4 {
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-weight: 300;
+}
+
+.containerHeader {
+	border-radius: 5px 5px 0 0;
+	background-color: #E60000;
+}
+
+.sideContent {
+	background-color: #DADADA;
+	border-radius: 5px 5px 5px 5px;
+	
 }
 
 #inputsection {
 	text-align: center;
+	background-color: #E60000;
+	border-radius: 0px 0px 5px 5px;
+	padding-top: 2px;
+	padding-bottom: 6px;
 }
 
 #sideinfo {
 	display: inline-block;
 	width: 200px;
+	margin-left: 9px;
+	margin-right: 3px;
 }
 
 #maininfo {
@@ -49,8 +103,13 @@ nav li:hover {
 	width: 800px;
 }
 
-
+input[type=text] {
+	border-radius: 4px 4px 4px 4px;
+}
 
 footer {
 	text-align: center;
+	font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+	font-weight: 300;
+	background-color: #E60000;
 }

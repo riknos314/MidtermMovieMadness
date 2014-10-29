@@ -1,7 +1,7 @@
-
 posttitle = function(mvtitle) {    //used to push elements to page in getMovieInfo()
 	var divcontainer = document.createElement('DIV');
 	var parcontainer = document.createElement('p');
+	divcontainer.id = "titleContainer";
 	parcontainer.innerHTML = mvtitle;
 	divcontainer.appendChild(parcontainer);
 	document.getElementById('maininfo').appendChild(divcontainer);
@@ -12,6 +12,7 @@ postpgrating = function(pgrat) {    //used to push elements to page in getMovieI
 	var divcontainer = document.createElement('DIV');
 	var parcontainer = document.createElement('p');
 	var ratingsdiv = document.createElement('DIV');
+	divcontainer.id = "pgContainer";
 	ratingsdiv.id = "ratingshere";
 	parcontainer.innerHTML = "Rating: " + pgrat;
 	divcontainer.appendChild(parcontainer);
@@ -23,6 +24,7 @@ postpgrating = function(pgrat) {    //used to push elements to page in getMovieI
 postcriticrating = function(crat) { //used to push elements to page in getMovieInfo()
 	var divcontainer = document.createElement('DIV');
 	var parcontainer = document.createElement('p');
+	divcontainer.id = "criticContainer";
 	parcontainer.innerHTML = "Critics' score: " + crat;
 	divcontainer.appendChild(parcontainer);
 	document.getElementById('ratingshere').appendChild(divcontainer);
@@ -31,6 +33,7 @@ postcriticrating = function(crat) { //used to push elements to page in getMovieI
 postaudiencerating = function(arat) { //used to push elements to page in getMovieInfo()
 	var divcontainer = document.createElement('DIV');
 	var parcontainer = document.createElement('p');
+	divcontainer.id = "audienceContainer";
 	parcontainer.innerHTML = "Audience score: " + arat;
 	divcontainer.appendChild(parcontainer);
 	document.getElementById('ratingshere').appendChild(divcontainer);
@@ -41,6 +44,7 @@ postsynopsis = function(_synopsis) { //used to push elements to page in getMovie
 		_synopsis = "No synopsis available for this movie";
 	var divcontainer = document.createElement('DIV');
 	var parcontainer = document.createElement('p');
+	divcontainer.id = "synopsisContainer";
 	parcontainer.innerHTML = "Synopsis: " + _synopsis;
 	divcontainer.appendChild(parcontainer);
 	document.getElementById('maininfo').appendChild(divcontainer);
@@ -48,6 +52,7 @@ postsynopsis = function(_synopsis) { //used to push elements to page in getMovie
 
 postmoviepic = function(movpic) { //used to push elements to page in getMovieInfo()
 	var divcontainer = document.createElement('DIV');
+	divcontainer.id = "pictureContainer";
 	divcontainer.innerHTML = "<img src=" + movpic + "></img>";
 	document.getElementById('sideinfo').appendChild(divcontainer);
 }
@@ -55,6 +60,8 @@ postmoviepic = function(movpic) { //used to push elements to page in getMovieInf
 
 postYouTubeVideo = function(vidID) {
 	var ifrm = document.createElement("IFRAME");
+	var divcontainer = document.createElement("DIV");
+	divcontainer.id = "ytContainer";
 	
 	console.log(vidID);
 
@@ -69,18 +76,89 @@ postYouTubeVideo = function(vidID) {
 
 }
 
-getMovieTheatre = function() {
+posttheatreinfo = function(theatrenames) { //Used to push info to page from Gracenote API
+	var tname1;
+	var tname2 = -1;
+	var tname3 = -1;
+	if (theatrenames.length > 3) {
+		tname1 = theatrenames[0];
+		tname2 = theatrenames[1];
+		tname3 = theatrenames[3];
+	}
+	else {
+		tname1 = theatrenames.shift();
+		if (theatrenames.length != 0)
+			tname2 = theatrenames.shift();
+		if (theatrenames.length != 0)
+			tname3 = theatrenames.shift();	
+	}
+	var divcontainer = document.createElement('DIV');
+	var parcontainer = document.createElement('p');
+	parcontainer.innerHTML = tname1;
+	divcontainer.appendChild(parcontainer);
+	if (tname2 != -1) {
+		var parcontainer2 = document.createElement('p');
+		parcontainer2.innerHTML = tname2;
+		divcontainer.appendChild(parcontainer2);
+	}
+	if (tname3 != -1) {
+		var parcontainer3 = document.createElement('p');
+		parcontainer3.innerHTML = tname3;
+		divcontainer.appendChild(parcontainer3);
+	}
+	document.body.appendChild(divcontainer);
+		
+	
+}
+
+getMovieTheatre = function(mvtitle) {           //"Movie theaters near you" info
 	var request = new XMLHttpRequest();
 	
 	request.onreadystatechange = function() {
 		if (request.readyState == 4)
 			if (request.status == 200) {
 				var infodict = JSON.parse(request.responseText);
-				var moviesexist = true;
-				if (infodict == [])
-					moviesexist = false;
-				
-				
+				var moviesExist = true;
+				if (infodict.length == 0) {
+					moviesExist = false;
+				}
+				var movie;    //Our movie object
+				if (moviesExist) {
+					moviefound = false;
+					for (var i=0; i<infodict.length; i++) {  //Find the correct movie
+						if (infodict[i].title == mvtitle) {
+							movie = infodict[i];
+							console.log(movie);
+							moviefound = true;
+						}
+					}
+					
+					if (moviefound) {    //Correct movie object has been found; time to find the theaters
+						var theatrelist = [];  //initialize array to hold names of theaters
+						for (var i=0; i<movie.showtimes.length; i++) {  //Check to make sure theatre name isn't in array; if not, then add it
+							var inArray = false;
+							for (var j=0; j<theatrelist.length; j++) {
+								if (movie.showtimes[i].theatre.name == theatrelist[j]) {
+									inArray = true;
+								}
+							}
+							if (!inArray) {
+								theatrelist.push(movie.showtimes[i].theatre.name);
+							}
+						}
+					}
+					else  {//Movie has not been found; push error message instead
+						var theatrelist = ["Sorry, this movie is not playing near you."];
+					}
+				}
+				else  {  //Movie information doesn't exist; push error message instead
+					var theatrelist = ["Sorry, no movie theatre information available for your area."];
+				}
+			posttheatreinfo(theatrelist);
+			}
+			else if (request.status == 400) {
+				var theatrelist = ["Sorry, you entered a bad zip code."]
+				posttheatreinfo(theatrelist);
 			}
 	}			
 	
@@ -98,7 +176,10 @@ getMovieTheatre = function() {
 	} 
 
 	today = String(yyyy + '-' + mm + '-' + dd);	
-	var targetURL = "http://data.tmsapi.com/v1/movies/showings?startDate=2014-10-28&zip=55371&api_key=mrjwfnn2xpks87j8rtpbgw6m";			
+	
+	var zipcode = document.getElementById('zipcode').value;
+	
+	var targetURL = "http://data.tmsapi.com/v1/movies/showings?startDate=" + today + "&zip=" + zipcode + "&api_key=f5c99t5xymqerdpurwfd7cjt";			
 	request.open('GET', targetURL, true);
 	
 	request.send(null);
@@ -113,9 +194,7 @@ getYouTubeTrailer = function(moviename) {  //Retrieves video ID of youtube video
 				var infodict = JSON.parse(request.responseText);
 				
 				var videoid = infodict.items[0].id.videoId;
-				
-				console.log(videoid);
-				
+								
 				postYouTubeVideo(videoid);         //pass video id to function that pushes video onto page
 			}
 	}
@@ -198,7 +277,7 @@ getMovieInfo = function(data) {   //Gets Rotten Tomatoes info
 				
 				if (moviefound)
 					getYouTubeTrailer(mtitle);      //Calls YouTube-vid-creator function
-					getMovieTheatre();
+					getMovieTheatre(mtitle);
 			
 	
 
