@@ -17,6 +17,7 @@ body {
 
 #content {
 	padding-bottom: 30px;
+
 }
 
 header {
@@ -76,25 +77,33 @@ h4 {
 	font-weight: 300;
 }
 
+
+
 .containerHeader {
 	border-radius: 5px 5px 0 0;
 	background-color: #E60000;
 }
 
+.content {
+	color: #000000;
+
+}
+
 .sideContent {
 	background-color: #DADADA;
 	border-radius: 5px 5px 5px 5px;
-	vertical-align: top;
 	min-height: 40px;
 	text-align: center;
+
+	
 }
 
 .mainContent {
 	background-color: #DADADA;
 	border-radius: 5px 5px 5px 5px;
-	vertical-align: top;
 	min-height: 80px;
 	text-align: center;
+	
 }
 
 #inputsection {
@@ -106,14 +115,14 @@ h4 {
 }
 
 #sideinfo {
-	display: inline-block;
+	display: inline-table;
 	width: 200px;
 	margin-left: 9px;
 	margin-right: 3px;
 }
 
 #maininfo {
-	display: inline-block;
+	display: inline-table;
 	width: 800px;
 }
 
