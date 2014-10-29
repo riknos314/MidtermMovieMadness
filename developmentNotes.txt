@@ -32,3 +32,15 @@ HTML CREATION CONVENTIONS
 
 	for each element, make a <div> tag, then place the content within the appropriate tags inside of said <div>
 		This is to allow for more flexibility in CSS styling.
+		
+		
+For our presentation (and really just for fun), a list of our notable technical challenges:
+	(For javascript) 1) Searching algorithms, both for RT movies and for the different types of objects
+						i)The Dark Knight vs. The Dark Knight Rises
+							a)Typos
+						ii)Weird JSON objects--searching for titles of movies and movie theatre names
+					 2)Same-origin problem
+							a)JSONP for Rotten Tomatoes
+					 3)Vague documentation for targetURL for Gracenote
+					 4) Massive typo error for movie theatre function
+					 5) API key problem
