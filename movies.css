@@ -160,6 +160,7 @@ h4 {
 #pictureContainer img {
 	height: 250px;
 	width: auto;
+	max-width: 170px;
 }
 
 input[type=text] {
